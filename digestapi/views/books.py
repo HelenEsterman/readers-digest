@@ -23,13 +23,13 @@ class BookViewSet(viewsets.ViewSet):
     def list(self, request):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True, context={'request': request})
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
         try:
             book = Book.objects.get(pk=pk)
-            serializer = BookSerializer(book, context={'request': request})
-            return Response(serializer.data)
+            serializer = BookSerializer(book, many=False, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
         except Book.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)

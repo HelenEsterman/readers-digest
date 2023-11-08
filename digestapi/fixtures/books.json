@@ -1,0 +1,62 @@
+[
+  {
+    "model": "digestapi.book",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "title": "The Neverending Story",
+      "author": "Edwin R. Billows",
+      "isbn_number": "8573282904",
+      "cover_image": "http://www.allbooks.com/neverendingstory/images/cover.png",
+      "categories": [3, 5]
+    }
+  },
+  {
+    "model": "digestapi.book",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "title": "The Maze Runner",
+      "author": "Blah Blah",
+      "isbn_number": "9573282984",
+      "cover_image": "https://template.canva.com/EAD7WuSVrt0/1/0/1003w-LVthABb24ik.jpg",
+      "categories": [1, 4]
+    }
+  },
+  {
+    "model": "digestapi.book",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "title": "Jean",
+      "author": "Edwin",
+      "isbn_number": "5573262904",
+      "cover_image": "https://cdn.myportfolio.com/560d16623f9c2df9615744dfab551b3d/e50c016f-b6a8-4666-8fb8-fe6bd5fd9fec_rw_1920.jpeg?h=dc627898fc5eac88aa791fb2b124ecbd",
+      "categories": [2, 5]
+    }
+  },
+  {
+    "model": "digestapi.book",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "title": "Bean",
+      "author": "Bimble",
+      "isbn_number": "4573232904",
+      "cover_image": "https://bukovero.com/wp-content/uploads/2016/07/Harry_Potter_and_the_Cursed_Child_Special_Rehearsal_Edition_Book_Cover.jpg",
+      "categories": [3, 4]
+    }
+  },
+  {
+    "model": "digestapi.book",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "title": "Test",
+      "author": "Meme",
+      "isbn_number": "1573232903",
+      "cover_image": "https://sdg-migration-met.s3.amazonaws.com/wp-content/uploads/2021/07/12213629/165523a5bad8aa3df160b9bbf37d19f5-Wade2BGreenbergThe2BJungle8057.jpg",
+      "categories": [1, 5]
+    }
+  }
+]
