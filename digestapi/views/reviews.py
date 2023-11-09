@@ -7,7 +7,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserReview
-        fields = ['id', 'book', 'user', 'rating', 'comment', 'date_posted', 'is_owner']
+        fields = ['id', 'book', 'user', 'rating', 'comment', 'date', 'is_owner']
         read_only_fields = ['user']
 
     def get_is_owner(self, obj):
@@ -37,7 +37,8 @@ class ReviewViewSet(viewsets.ViewSet):
         review.user = request.auth.user
         review.rating = request.data['rating']
         review.comment = request.data['comment']
-        review.date = request.data["userReviewdate"]
+        review.date = review.date
+        # review.date = request.data['date']
         # Save the review
         review.save()
 
