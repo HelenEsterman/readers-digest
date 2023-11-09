@@ -23,13 +23,13 @@ class BookViewSet(viewsets.ViewSet):
     def list(self, request):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True, context={'request': request})
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
         try:
             book = Book.objects.get(pk=pk)
-            serializer = BookSerializer(book, context={'request': request})
-            return Response(serializer.data)
+            serializer = BookSerializer(book, many=False, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
         except Book.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -40,6 +40,7 @@ class BookViewSet(viewsets.ViewSet):
         author = request.data.get('author')
         isbn_number = request.data.get('isbn_number')
         cover_image = request.data.get('cover_image')
+        # created = request.data.get('created')
 
         # Create a book database row first, so you have a
         # primary key to work with
@@ -48,7 +49,8 @@ class BookViewSet(viewsets.ViewSet):
             title=title,
             author=author,
             cover_image=cover_image,
-            isbn_number=isbn_number)
+            isbn_number=isbn_number,)
+            # created=created)
 
         # Establish the many-to-many relationships
         category_ids = request.data.get('categories', [])

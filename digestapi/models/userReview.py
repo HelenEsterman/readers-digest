@@ -11,5 +11,6 @@ class UserReview(models.Model):
             MaxValueValidator(10),  # Maximum value allowed
         ])
     comment = models.CharField(max_length=500, blank=True)
-    date = models.DateField()
+    date = models.DateTimeField(auto_now_add=True)
+    
     
