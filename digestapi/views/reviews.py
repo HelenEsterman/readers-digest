@@ -1,9 +1,17 @@
 from rest_framework import viewsets, status, serializers, permissions
 from rest_framework.response import Response
 from digestapi.models import UserReview, Book
+from django.contrib.auth.models import User
+
+class ReviewUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', "first_name", "last_name",)
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
+    user = ReviewUserSerializer(many=False)
 
     class Meta:
         model = UserReview
@@ -20,7 +28,17 @@ class ReviewViewSet(viewsets.ViewSet):
 
     def list(self, request):
         # Get all reviews
-        reviews = UserReview.objects.all()
+        # reviews = UserReview.objects.all()
+
+         # Get the book_id from the query parameters
+        book = request.query_params.get('book')
+
+        # Filter reviews based on the book_id if provided
+        if book:
+            reviews = UserReview.objects.filter(book=book)
+        else:
+            reviews = UserReview.objects.all()
+
         # Serialize the objects, and pass request to determine owner
         serializer = ReviewSerializer(reviews, many=True, context={'request': request})
 
